@@ -18,7 +18,7 @@
 
 #define COURSE_WEIGHT_BUF 6 // numeric input + '\n' + '\0'
 #define MENU_BUF_LEN 16 // 14 chars + '\n' + '\0'
-#define SEPERATOR " ===================================\n"
+#define SEPERATOR " ===================================\n" // Seperator for UI elements
 
 int main(){
    char course_code_buf[COURSE_CODE_BUF_LEN];

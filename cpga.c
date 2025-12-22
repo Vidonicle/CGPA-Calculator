@@ -16,7 +16,7 @@
 
 #include "cgpa.h"
 
-#define SEPERATOR " ===================================\n"
+#define SEPERATOR " ===================================\n" // Seperator for UI elements
 
 static const grade_map_t grade_map[] = {{"A+", 12.0f}, {"A", 11.0f}, {"A-", 10.0f}, 
                                         {"B+", 9.0f}, {"B", 8.0f}, {"B-", 7.0f}, 
@@ -25,7 +25,7 @@ static const grade_map_t grade_map[] = {{"A+", 12.0f}, {"A", 11.0f}, {"A-", 10.0
                                         {"F", 0.0f}};
 static const size_t GRADE_MAP_LEN = sizeof grade_map / sizeof grade_map[0];
 
-
+// Add course in alphanumerical order
 bool add_course(coursenode_t **courses, const char *course_code, float course_weight, const char *letter_grade)  {
 
     coursenode_t *new_node = malloc(sizeof(coursenode_t));
@@ -67,6 +67,7 @@ bool add_course(coursenode_t **courses, const char *course_code, float course_we
 
 }
 
+// Calculate earned credits depending on course weight and letter grade
 float earned_credits(float course_weight, const char *letter_grade) {
 
     for (size_t i = 0; i < GRADE_MAP_LEN; i++) {
@@ -78,6 +79,7 @@ float earned_credits(float course_weight, const char *letter_grade) {
 
 }
 
+// Print grades and formats column sections
 void display_grades(coursenode_t *courses) {
 
     float accum_credits = 0.0f;
@@ -111,6 +113,7 @@ void display_grades(coursenode_t *courses) {
 
 }
 
+// Check for existing courses
 bool check_courses(coursenode_t *courses, const char *course_code) {
 
     coursenode_t *curr = courses;
@@ -125,6 +128,7 @@ bool check_courses(coursenode_t *courses, const char *course_code) {
 
 }
 
+// Check validation for course code
 bool validate_course_code(char *course_code) {
 
     if (!(strlen(course_code) == 8)){
@@ -148,6 +152,7 @@ bool validate_course_code(char *course_code) {
 
 }
 
+// Check validation for letter grade
 bool validate_letter_grade (const char *letter_grade) {
     
     for (size_t i = 0; i < GRADE_MAP_LEN; i++) {
@@ -159,6 +164,7 @@ bool validate_letter_grade (const char *letter_grade) {
 
 }
 
+// Deconstruct and free list
 void deconstruct(coursenode_t *courses) {
 
     while(courses){
@@ -170,6 +176,7 @@ void deconstruct(coursenode_t *courses) {
 
 }
 
+// Flush input buffer
 void flush_stdin (void) {
 
     int c_flush;
