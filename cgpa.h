@@ -1,10 +1,15 @@
 /***********************************
- 
-  cgpa.h
-  Author: Arul Rao (Vidonicle)
-  Date Created: 12/20/2025
-  History: N/A
- 
+ * cgpa.h
+ *
+ * CGPA Calculator - public interface and shared definitions
+ *
+ * Defines:
+ * - course data structures
+ * - grading validation helpers
+ * - input-related constants
+ *
+ * Author: Arul Rao (Vidonicle)
+ * License: MIT
  ***********************************/
 
 #ifndef CGPA_H
@@ -13,7 +18,13 @@
 #include <stdbool.h>
 
 #define COURSE_CODE_BUF_LEN 10  // 8 chars + '\n' + '\0'
+#define COURSE_WEIGHT_BUF_LEN 6 // numeric input + '\n' + '\0'
 #define LETTER_GRADE_BUF_LEN 4  // 2 chars + '\n' + '\0'
+
+#define MENU_COUNT 4 // Number of options in the menu
+#define MENU_DISPLAY (MENU_COUNT - 1) // Display option
+#define MENU_EXIT MENU_COUNT // Exit option
+#define SEPERATOR " ===================================\n" // Seperator for UI elements
 
 typedef struct course {
    char course_code[COURSE_CODE_BUF_LEN];
@@ -28,9 +39,13 @@ typedef struct {
    float value;
 } grade_map_t;
 
+void print_menu(void);
+
 bool add_course(coursenode_t **courses, const char *course_code, float course_weight, const char *letter_grade);
 
-float earned_credits( float course_weight, const char *letter_grade);
+bool load_from_file(coursenode_t **courses, FILE *fptr);
+
+float earned_credits(float course_weight, const char *letter_grade);
 
 void display_grades(coursenode_t *courses);
 
@@ -38,10 +53,12 @@ bool check_courses(coursenode_t *courses, const char *course_code);
 
 bool validate_course_code(char *course_code);
 
-bool validate_letter_grade (const char *letter_grade);
+bool validate_letter_grade(const char *letter_grade);
+
+bool delete_course(coursenode_t **courses, const char *course_code);
 
 void deconstruct(coursenode_t *course);
 
-void flush_stdin (void);
+void flush_stdin(void);
 
 #endif
