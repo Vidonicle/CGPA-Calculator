@@ -40,4 +40,4 @@ What did you learn while building this project? What challenges did you face and
 - `printf` formatting is more powerful (and more subtle) than expected when aligning CLI output.
 - Building a non-trivial program reinforced existing knowledge of structs, pointers, and dynamic memory management.
 
-
+This project is complete as-is. Future improvements may be explored later.

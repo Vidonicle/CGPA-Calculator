@@ -21,10 +21,11 @@
 #define COURSE_WEIGHT_BUF_LEN 6 // numeric input + '\n' + '\0'
 #define LETTER_GRADE_BUF_LEN 4  // 2 chars + '\n' + '\0'
 
-#define MENU_COUNT 4 // Number of options in the menu
+#define MENU_COUNT 5 // Number of options in the menu
 #define MENU_DISPLAY (MENU_COUNT - 1) // Display option
 #define MENU_EXIT MENU_COUNT // Exit option
-#define SEPERATOR " ===================================\n" // Seperator for UI elements
+#define SEPERATOR1 "\n ===================================\n" // Seperator for UI elements
+#define SEPERATOR2 " ===================================\n" // Seperator for stacked elements
 
 typedef struct course {
    char course_code[COURSE_CODE_BUF_LEN];
@@ -41,7 +42,13 @@ typedef struct {
 
 void print_menu(void);
 
+coursenode_t *fetch_node(coursenode_t *courses, const char *course_code);
+
 bool add_course(coursenode_t **courses, const char *course_code, float course_weight, const char *letter_grade);
+
+void delete_course(coursenode_t **courses, const char *course_code);
+
+bool edit_course(coursenode_t **courses, const char *course_code_old, const char *course_code_new, float course_weight_new, const char *letter_grade_new);
 
 bool load_from_file(coursenode_t **courses, FILE *fptr);
 
@@ -54,8 +61,6 @@ bool check_courses(coursenode_t *courses, const char *course_code);
 bool validate_course_code(char *course_code);
 
 bool validate_letter_grade(const char *letter_grade);
-
-bool delete_course(coursenode_t **courses, const char *course_code);
 
 void deconstruct(coursenode_t *course);
 
