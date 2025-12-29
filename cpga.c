@@ -35,7 +35,7 @@ void print_menu(void) {
         "  -Please follow all instructions\n"
         "  -Currently only compatible with the system\n"
         "   used by Carleton University\n"
-        "  -V1.1.0\n"
+        "  -V1.2.0\n"
         " =========CGPA CALCULATOR===========");
 
     printf("\n\n  1. Add a course\n"
