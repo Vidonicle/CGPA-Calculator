@@ -11,6 +11,7 @@
  * Author: Arul Rao (Vidonicle)
  * License: MIT
  ***********************************/
+#define _POSIX_C_SOURCE 200809L
 
 #include <ctype.h>
 #include <stdbool.h>
@@ -35,7 +36,7 @@ void print_menu(void) {
         "  -Please follow all instructions\n"
         "  -Currently only compatible with the system\n"
         "   used by Carleton University\n"
-        "  -V1.2.0\n"
+        "  -V1.2.1\n"
         " =========CGPA CALCULATOR===========");
 
     printf("\n\n  1. Add a course\n"
@@ -146,7 +147,7 @@ bool load_from_file(coursenode_t **courses, FILE *fptr) {
         strcpy(course_code, tok);
 
         // Get other fields for course
-        while (tok = strtok_r(NULL, " \t\n", &tok_entptr)) {
+        while ((tok = strtok_r(NULL, " \t\n", &tok_entptr)) != NULL) {
 
             // Get course weight
             char *w_endptr;
@@ -204,7 +205,7 @@ void display_grades(coursenode_t *courses) {
     printf("\n\n  Total Credits Earned: %4.2f"
            "\n  Total Credits Completed: %4.2f"
            "\n\n  Current CGPA: %4.2f\n"
-           SEPERATOR1,
+           SEPERATOR2,
            accum_credits,
            accum_weight,
            accum_weight > 0 ? accum_credits / accum_weight : 0.0f);

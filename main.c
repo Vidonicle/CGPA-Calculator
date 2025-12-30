@@ -282,27 +282,27 @@ int main() {
             break;
 
             if (!strchr(course_code_buf, '\n')) {
-            fprintf(stderr, SEPERATOR1
-            "\n  Input is too long! Flushing stdin...\n"
-            SEPERATOR1);
-            flush_stdin();
-            break;
+               fprintf(stderr, SEPERATOR1
+                  "\n  Input is too long! Flushing stdin...\n"
+                  SEPERATOR1);
+               flush_stdin();
+               break;
             }
 
             course_code_buf[strcspn(course_code_buf, "\n")] = '\0';
 
             if (!validate_course_code(course_code_buf)) {
-            fprintf(stderr, SEPERATOR1
-            "\n  Invalid course code format\n"
-            SEPERATOR1);
-            break;
+               fprintf(stderr, SEPERATOR1
+                  "\n  Invalid course code format\n"
+                  SEPERATOR1);
+               break;
             }
 
             if (!check_courses(courses, course_code_buf)) {
-            fprintf(stderr, SEPERATOR1
-            "  Course not found\n"
-            SEPERATOR1);
-            break;
+               fprintf(stderr, SEPERATOR1
+                  "\n  Course not found\n"
+                  SEPERATOR1);
+               break;
             }
 
             char course_code_old[COURSE_CODE_BUF_LEN];
@@ -313,7 +313,7 @@ int main() {
             strcpy(old_grade, fetch_node(courses, course_code_buf)->letter_grade);
 
             // Get new course code
-            printf(SEPERATOR1
+            printf(SEPERATOR2
                "  Enter new course code (leave blank for no changes): ");
 
             if (!fgets(course_code_buf, sizeof(course_code_buf), stdin))
@@ -334,7 +334,7 @@ int main() {
             } else {
                if (!validate_course_code(course_code_buf)) {
                   fprintf(stderr, SEPERATOR1
-                     "  Invalid new course code\n"
+                     "\n  Invalid new course code\n"
                      SEPERATOR1);
                   break;
                }
@@ -342,7 +342,7 @@ int main() {
             }
 
             // Get course weight
-            printf(SEPERATOR1
+            printf(SEPERATOR2
                "  Enter new course weight (leave blank for no changes): ");
 
             if (!fgets(course_weight_buf, sizeof(course_weight_buf), stdin))
@@ -365,7 +365,7 @@ int main() {
 
                if (*cwn_endptr != '\0' || !(tmp == 1.0f || tmp == 0.5f || tmp == 0.25f)) {
                   fprintf(stderr, SEPERATOR1
-                     "  Invalid course weight\n"
+                     "\n  Invalid course weight\n"
                      SEPERATOR1);
                   break;
                }
@@ -373,7 +373,7 @@ int main() {
                course_weight_new = tmp;
             }
 
-            printf(SEPERATOR1
+            printf(SEPERATOR2
             "  Enter new letter grade (leave blank for no changes): ");
 
             if (!fgets(letter_grade_buf, sizeof(letter_grade_buf), stdin)) break;
@@ -395,7 +395,7 @@ int main() {
 
                if (!validate_letter_grade(letter_grade_buf)) {
                   fprintf(stderr, SEPERATOR1
-                     "  Invalid letter grade\n"
+                     "\n  Invalid letter grade\n"
                      SEPERATOR1);
                   break;
                }
@@ -405,14 +405,14 @@ int main() {
             // Finalize edit
             if (!edit_course(&courses, course_code_old, course_code_new, course_weight_new, letter_grade_new)) {
                fprintf(stderr, SEPERATOR1
-                  "  Fatal error: out of memory\n"
+                  "\n  Fatal error: out of memory\n"
                   SEPERATOR1);
                   deconstruct(courses);
                   return EXIT_FAILURE;
             }
 
             printf(SEPERATOR1
-               "  Course successfully edited\n"
+               "\n  Course successfully edited\n"
                SEPERATOR1);
          } while (0);
       } else if (menu_choice == MENU_DISPLAY) {
