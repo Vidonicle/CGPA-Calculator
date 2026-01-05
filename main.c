@@ -12,8 +12,6 @@
  * License: MIT
  ***********************************/
 
- // TODO FInish edit courses, formatting of menu is probably finished, check all input stacks
-
 #include <ctype.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -24,8 +22,7 @@
 #include "cgpa.h"
 
 #define MENU_BUF_LEN 64 // 62 chars + '\n' + '\0'
-#define FILENAME_LEN MENU_BUF_LEN
-
+#define FILENAME_LEN MENU_BUF_LEN //Kinda useless verbosity but it looks clean
 int main() {
    char course_code_buf[COURSE_CODE_BUF_LEN];
    char course_weight_buf[COURSE_WEIGHT_BUF_LEN];
@@ -308,9 +305,10 @@ int main() {
             char course_code_old[COURSE_CODE_BUF_LEN];
             strcpy(course_code_old, course_code_buf);
 
-            float old_weight = fetch_node(courses, course_code_buf)->course_weight;
+            coursenode_t *fetched_node = fetch_node(courses, course_code_buf);
+            float old_weight = fetched_node->course_weight;
             char old_grade[LETTER_GRADE_BUF_LEN];
-            strcpy(old_grade, fetch_node(courses, course_code_buf)->letter_grade);
+            strcpy(old_grade, fetched_node->letter_grade);
 
             // Get new course code
             printf(SEPERATOR2
@@ -339,6 +337,13 @@ int main() {
                   break;
                }
                strcpy(course_code_new, course_code_buf);
+            }
+
+            if (strcmp(course_code_new, course_code_old) != 0 && check_courses(courses, course_code_new)) {
+               fprintf(stderr, SEPERATOR1
+                  "\n  Course code already exists\n"
+                  SEPERATOR1);
+               break;
             }
 
             // Get course weight

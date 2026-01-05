@@ -111,6 +111,7 @@ void delete_course(coursenode_t **courses, const char *course_code) {
                 *courses = curr->next;
 
             free(curr);
+            return;
         }
 
         prev = curr;
