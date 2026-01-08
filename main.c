@@ -312,10 +312,11 @@ int main() {
                     }
                     printf(SEPERATOR2
                            "  Course Successfully Edited!\n"
-                           "  -Course Code: %s\n"
+                           "  -Old Course Code: %s\n"
+                           "  -New Course Code: %s\n"
                            "  -Course Weight: %4.2f\n"
                            "  -Letter Grade: %s\n",
-                           course_code_new, course_weight_new, letter_grade_new);
+                           course_code_old, course_code_new, course_weight_new, letter_grade_new);
                 } while (0);
                 break;
             case (MENU_DISPLAY):
