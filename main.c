@@ -167,10 +167,10 @@ int main() {
                         return EXIT_FAILURE;
                     } else {
                         printf(SEPERATOR2
-                               "  Course Added!\n"
+                               "  Course Successfully Added!\n"
                                "  -Course Code: %s\n"
                                "  -Course Weight: %4.2f\n"
-                               "  -Letter Grade: %s\n" SEPERATOR2,
+                               "  -Letter Grade: %s\n",
                                course_code_buf, course_weight, letter_grade_buf);
                     }
                 } while (0);
@@ -198,7 +198,7 @@ int main() {
                         ui_print_error(UI_ERR_NOT_FOUND);
                     } else {
                         delete_course(&courses, course_code_buf);
-                        printf(SEPERATOR1 "\n  Course successfully deleted\n" SEPERATOR1);
+                        printf(SEPERATOR2 "\n  Course successfully deleted\n");
                     }
                 }
                 break;
@@ -307,11 +307,15 @@ int main() {
                     if (!edit_course(&courses, course_code_old, course_code_new, course_weight_new,
                                      letter_grade_new)) {
                         ui_print_error(UI_ERR_OOM);
-                        s deconstruct(courses);
+                        deconstruct(courses);
                         return EXIT_FAILURE;
                     }
-
-                    printf(SEPERATOR1 "\n  Course successfully edited\n" SEPERATOR1);
+                    printf(SEPERATOR2
+                           "  Course Successfully Edited!\n"
+                           "  -Course Code: %s\n"
+                           "  -Course Weight: %4.2f\n"
+                           "  -Letter Grade: %s\n",
+                           course_code_new, course_weight_new, letter_grade_new);
                 } while (0);
                 break;
             case (MENU_DISPLAY):
