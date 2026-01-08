@@ -36,7 +36,7 @@ void print_menu(void) {
         "  -Please follow all instructions\n"
         "  -Currently only compatible with the system\n"
         "   used by Carleton University\n"
-        "  -V1.2.2\n"
+        "  -V1.2.3\n"
         " =========CGPA CALCULATOR===========");
 
     printf(
