@@ -167,7 +167,7 @@ int main() {
                         return EXIT_FAILURE;
                     } else {
                         printf(SEPERATOR2
-                               "  Course Successfully Added!\n"
+                               "\n  Course Successfully Added!\n"
                                "  -Course Code: %s\n"
                                "  -Course Weight: %4.2f\n"
                                "  -Letter Grade: %s\n",
@@ -311,7 +311,7 @@ int main() {
                         return EXIT_FAILURE;
                     }
                     printf(SEPERATOR2
-                           "  Course Successfully Edited!\n"
+                           "\n  Course Successfully Edited!\n"
                            "  -Old Course Code: %s\n"
                            "  -New Course Code: %s\n"
                            "  -Course Weight: %4.2f\n"

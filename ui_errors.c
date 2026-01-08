@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "cgpa.h"  // for SEPERATOR1 and flush_stdin()
+#include "cgpa.h"  // for SEPERATORs and flush_stdin()
 
 void ui_print_error(ui_error_t err) {
-    fprintf(stderr, SEPERATOR1);
+    fprintf(stderr, SEPERATOR2);
 
     switch (err) {
         case UI_ERR_INPUT_TOO_LONG:
