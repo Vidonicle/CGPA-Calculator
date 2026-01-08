@@ -58,3 +58,4 @@ dkms.conf
 cgpa
 cgpacalc
 courses.txt
+.clang-format

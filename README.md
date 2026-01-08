@@ -16,7 +16,7 @@ Carleton University grading scale.
 Requires a C compiler (GCC or Clang).
 
 ```bash
-gcc -Wall -Wextra -std=c11 main.c cgpa.c -o cgpa
+gcc -Wall -Wextra -std=c11 main.c cgpa.c ui_errors.c -o cgpa
 ```
 
 Run the program from the terminal:
